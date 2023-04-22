@@ -1,0 +1,79 @@
+﻿@model IEnumerable<Model.Medecin>
+
+@{
+    ViewBag.Title = "Médecins";
+}
+
+<h2>Médecins</h2>
+
+<p>
+    @Html.ActionLink("Créer un médecin", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Département")
+        </th>
+        <th>
+            @Html.DisplayName("Nom")
+        </th>
+        <th>
+            @Html.DisplayName("Prénom")
+        </th>
+        <th>
+            @Html.DisplayName("Adresse")
+        </th>
+        <th>
+            @Html.DisplayName("Téléphone")
+        </th>
+        <th>
+            @Html.DisplayName("Spécialité")
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Departement.dep_nom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.med_nom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.med_prenom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.med_addresse)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.med_telephone)
+        </td>
+        <td>
+            @if (item.med_specialite.HasValue)
+            {
+                if (item.med_specialite.Value)
+                {
+                    @Html.DisplayName("Oui")
+                }
+                else
+                {
+                    @Html.DisplayName("Non")
+                }
+            }
+            else
+            {
+                @Html.DisplayName("N/A")
+            }
+
+            @*@Html.DisplayFor(modelItem => item.med_specialite)*@
+        </td>
+        <td>
+            @Html.ActionLink("Editer", "Edit", new { id=item.med_id }) |
+            @Html.ActionLink("Détail", "Details", new { id=item.med_id }) |
+            @Html.ActionLink("Supprimer", "Delete", new { id=item.med_id })
+        </td>
+    </tr>
+}
+
+</table>
