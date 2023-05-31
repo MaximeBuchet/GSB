@@ -1,17 +1,17 @@
 ﻿@model Model.Medecin
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Détails";
 }
 
-<h2>Details</h2>
+<h2>Détails</h2>
 
 <div>
-    <h4>Medecin</h4>
+    <h4>Médecin</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Departement.dep_region)
+            @Html.DisplayName("Département")
         </dt>
 
         <dd>
@@ -19,7 +19,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.med_nom)
+            @Html.DisplayName("Nom")
         </dt>
 
         <dd>
@@ -27,7 +27,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.med_prenom)
+            @Html.DisplayName("Prénom")
         </dt>
 
         <dd>
@@ -35,7 +35,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.med_addresse)
+            @Html.DisplayName("Adresse")
         </dt>
 
         <dd>
@@ -43,7 +43,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.med_telephone)
+            @Html.DisplayName("Téléphone")
         </dt>
 
         <dd>
@@ -51,16 +51,30 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.med_specialite)
+            @Html.DisplayName("Spécialité")
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.med_specialite)
+            @if (Model.med_specialite.HasValue)
+            {
+                if (Model.med_specialite.Value)
+                {
+                    @Html.DisplayName("Oui")
+                }
+                else
+                {
+                    @Html.DisplayName("Non")
+                }
+            }
+            else
+            {
+                @Html.DisplayName("N/A")
+            }
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.med_id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Modifier", "Edit", new { id = Model.med_id }) |
+    @Html.ActionLink("Liste médecins", "Index")
 </p>

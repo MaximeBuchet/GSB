@@ -6,30 +6,6 @@
 
 <h2>Liste des médecin du département : @Html.DisplayFor(model => model.dep_nom)</h2>
 <h4>@Html.DisplayFor(model => model.dep_region)</h4>
-<hr />
-
-<div>
-    <h4>Departement</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.dep_region)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.dep_region)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.dep_nom)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.dep_nom)
-        </dd>
-
-    </dl>
-</div>
 
 @if (Model.Medecins.Count != 0)
 {
@@ -75,12 +51,26 @@
                     @Html.DisplayFor(modelItem => item.med_telephone)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.med_specialite)
+                    @if (item.med_specialite.HasValue)
+                    {
+                        if (item.med_specialite.Value)
+                        {
+                            @Html.DisplayName("Oui")
+                        }
+                        else
+                        {
+                            @Html.DisplayName("Non")
+                        }
+                    }
+                    else
+                    {
+                        @Html.DisplayName("N/A")
+                    }
                 </td>
                 <td>
-                    @Html.ActionLink("Editer", "Edit", new { id = item.med_id }) |
-                    @Html.ActionLink("Détail", "Details", new { id = item.med_id }) |
-                    @Html.ActionLink("Supprimer", "Delete", new { id = item.med_id })
+                    @Html.ActionLink("Editer","../Medecins/Edit", new { id = item.med_id }) |
+                    @Html.ActionLink("Détail", "../Medecins/Details", new { id = item.med_id }) |
+                    @Html.ActionLink("Supprimer", "../Medecins/Delete", new { id = item.med_id })
                 </td>
             </tr>
         }
@@ -94,6 +84,5 @@ else
 
 
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.dep_numero }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Retour", "Index")
 </p>

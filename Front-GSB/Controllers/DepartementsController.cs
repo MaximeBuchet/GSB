@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using Model;
 using System.Net.Http;
@@ -14,7 +10,6 @@ namespace Front_GSB.Controllers
 {
     public class DepartementsController : Controller
     {
-        // l'objectif c'est d'utiliser mon back-end
         //private GSB_Data_Model db = new GSB_Data_Model();
 
         // GET: Departements

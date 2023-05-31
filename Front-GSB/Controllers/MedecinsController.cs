@@ -8,7 +8,6 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Model;
-//using ORM_GSB;
 using System.Net.Http;
 using Newtonsoft.Json;
 using System.Text;
@@ -18,7 +17,6 @@ namespace Front_GSB.Controllers
 {
     public class MedecinsController : Controller
     {
-        //private GSB_Data_Model db = new GSB_Data_Model();
 
         // GET: Medecins
         public async Task<ActionResult> Index()
@@ -102,8 +100,7 @@ namespace Front_GSB.Controllers
                 ViewBag.dep_numero = new SelectList(dep, "dep_numero", "dep_nom");
                 return View();
             }
-            //ViewBag.dep_numero = new SelectList(db.Departements, "dep_numero", "dep_nom");
-            //return View();
+
         }
 
         // POST: Medecins/Create

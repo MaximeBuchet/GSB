@@ -1,18 +1,17 @@
 ﻿@model Model.Medecin
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Supprimer";
 }
 
-<h2>Delete</h2>
+<h2>Supprimer</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Êtes-vous sûr de vouloir supprimer ce médecin ?</h3>
 <div>
-    <h4>Medecin</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Departement.dep_region)
+            @Html.DisplayName("Département")
         </dt>
 
         <dd>
@@ -20,7 +19,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.med_nom)
+            @Html.DisplayName("Nom")
         </dt>
 
         <dd>
@@ -28,7 +27,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.med_prenom)
+            @Html.DisplayName("Prénom")
         </dt>
 
         <dd>
@@ -36,7 +35,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.med_addresse)
+            @Html.DisplayName("Adresse")
         </dt>
 
         <dd>
@@ -44,7 +43,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.med_telephone)
+            @Html.DisplayName("Téléphone")
         </dt>
 
         <dd>
@@ -52,11 +51,25 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.med_specialite)
+            @Html.DisplayName("Spécialité")
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.med_specialite)
+            @if (Model.med_specialite.HasValue)
+            {
+                if (Model.med_specialite.Value)
+                {
+                    @Html.DisplayName("Oui")
+                }
+                else
+                {
+                    @Html.DisplayName("Non")
+                }
+            }
+            else
+            {
+                @Html.DisplayName("N/A")
+            }
         </dd>
 
     </dl>
@@ -65,8 +78,9 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <input type="submit" value="Delete" class="btn btn-default" /> 
         </div>
+
+            @Html.ActionLink("Liste médecins", "Index")
     }
 </div>

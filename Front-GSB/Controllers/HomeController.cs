@@ -14,7 +14,7 @@ namespace Front_GSB.Controllers
             return View();
         }
 
-        [Authorize] //nécessite une authentification
+        [AllowAnonymous]
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -22,7 +22,7 @@ namespace Front_GSB.Controllers
             return View();
         }
 
-        [Authorize]
+        [AllowAnonymous]
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
